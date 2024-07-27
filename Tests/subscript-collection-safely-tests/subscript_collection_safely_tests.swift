@@ -13,7 +13,7 @@ import XCTest
 final class subscript_safely_tests: XCTestCase {
     
     ///
-    func test_subscript_safely () {
+    func test_subscript_safely() {
         
         ///
         let a = [1, 2, 3]

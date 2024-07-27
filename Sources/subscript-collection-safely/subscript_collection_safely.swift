@@ -6,23 +6,49 @@
 //
 
 ///
-public extension Array {
+extension Array {
     
     ///
-    subscript (safely index: Index) -> Element? {
+    public subscript(
+        safely index: Index
+    ) -> Element? {
+        
+        ///
         get {
+            
+            ///
             guard self.indices.contains(index) else { return nil }
+            
+            ///
             return self[index]
         }
+        
+        ///
         set {
+            
+            ///
             if let newValue {
+                
+                ///
                 if self.indices.contains(index) {
+                    
+                    ///
                     self[index] = newValue
+                    
+                ///
                 } else if index == self.endIndex {
+                    
+                    ///
                     self.append(newValue)
                 }
+                
+            ///
             } else {
+                
+                ///
                 if self.indices.contains(index) {
+                    
+                    ///
                     self.remove(at: index)
                 }
             }
@@ -31,11 +57,17 @@ public extension Array {
 }
 
 ///
-public extension RangeReplaceableCollection {
+extension RangeReplaceableCollection {
     
     ///
-    subscript (safely index: Index) -> Element? {
+    public subscript(
+        safely index: Index
+    ) -> Element? {
+        
+        ///
         guard self.indices.contains(index) else { return nil }
+        
+        ///
         return self[index]
     }
 }
