@@ -34,11 +34,16 @@ final class subscript_safely_tests: XCTestCase {
     
     ///
     func test_keyPath () {
+        
+        ///
         func test (_ keyPath: KeyPath<Array<Int>, Int?>) -> Int? {
             [1, 2, 3][keyPath: keyPath]
         }
+        
+        ///
         XCTAssertEqual(
             [
+                test(\.[safely: -1]),
                 test(\.[safely: 0]),
                 test(\.[safely: 1]),
                 test(\.[safely: 2]),
@@ -46,7 +51,7 @@ final class subscript_safely_tests: XCTestCase {
                 test(\.[safely: 4]),
                 test(\.[safely: 1000]),
             ],
-            [1, 2, 3, nil, nil, nil]
+            [nil, 1, 2, 3, nil, nil, nil]
         )
     }
 }
